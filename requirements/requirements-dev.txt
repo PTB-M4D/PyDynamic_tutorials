@@ -10,39 +10,39 @@ appdirs==1.4.4
     # via black
 argon2-cffi==20.1.0
     # via
-    #   -c requirements/requirements.txt
+    #   -c requirements.txt
     #   notebook
 async-generator==1.10
     # via
-    #   -c requirements/requirements.txt
+    #   -c requirements.txt
     #   nbclient
 attrs==20.3.0
     # via
-    #   -c requirements/requirements.txt
+    #   -c requirements.txt
     #   jsonschema
 babel==2.9.0
     # via sphinx
 backcall==0.2.0
     # via
-    #   -c requirements/requirements.txt
+    #   -c requirements.txt
     #   ipython
 black==20.8b1
-    # via -r requirements/requirements-dev.in
+    # via -r requirements-dev.in
 bleach==3.3.0
     # via
-    #   -c requirements/requirements.txt
+    #   -c requirements.txt
     #   nbconvert
 certifi==2020.12.5
     # via
-    #   -c requirements/requirements.txt
+    #   -c requirements.txt
     #   requests
 cffi==1.14.4
     # via
-    #   -c requirements/requirements.txt
+    #   -c requirements.txt
     #   argon2-cffi
 chardet==4.0.0
     # via
-    #   -c requirements/requirements.txt
+    #   -c requirements.txt
     #   requests
 click==7.1.2
     # via black
@@ -50,11 +50,11 @@ commonmark==0.9.1
     # via recommonmark
 decorator==4.4.2
     # via
-    #   -c requirements/requirements.txt
+    #   -c requirements.txt
     #   ipython
 defusedxml==0.6.0
     # via
-    #   -c requirements/requirements.txt
+    #   -c requirements.txt
     #   nbconvert
 docutils==0.16
     # via
@@ -63,48 +63,48 @@ docutils==0.16
     #   sphinx
 entrypoints==0.3
     # via
-    #   -c requirements/requirements.txt
+    #   -c requirements.txt
     #   nbconvert
 idna==2.10
     # via
-    #   -c requirements/requirements.txt
+    #   -c requirements.txt
     #   requests
 imagesize==1.2.0
     # via sphinx
 ipykernel==5.4.3
     # via
-    #   -c requirements/requirements.txt
+    #   -c requirements.txt
     #   notebook
 ipython-genutils==0.2.0
     # via
-    #   -c requirements/requirements.txt
+    #   -c requirements.txt
     #   jupyter-contrib-nbextensions
     #   nbformat
     #   notebook
     #   traitlets
 ipython==7.20.0
     # via
-    #   -c requirements/requirements.txt
+    #   -c requirements.txt
     #   ipykernel
     #   jupyter-latex-envs
 jedi==0.18.0
     # via
-    #   -c requirements/requirements.txt
+    #   -c requirements.txt
     #   ipython
 jinja2==2.11.3
     # via
-    #   -c requirements/requirements.txt
+    #   -c requirements.txt
     #   nbconvert
     #   nbsphinx
     #   notebook
     #   sphinx
 jsonschema==3.2.0
     # via
-    #   -c requirements/requirements.txt
+    #   -c requirements.txt
     #   nbformat
 jupyter-client==6.1.11
     # via
-    #   -c requirements/requirements.txt
+    #   -c requirements.txt
     #   ipykernel
     #   nbclient
     #   notebook
@@ -113,10 +113,10 @@ jupyter-contrib-core==0.3.3
     #   jupyter-contrib-nbextensions
     #   jupyter-nbextensions-configurator
 jupyter-contrib-nbextensions==0.5.1
-    # via -r requirements/requirements-dev.in
+    # via -r requirements-dev.in
 jupyter-core==4.7.1
     # via
-    #   -c requirements/requirements.txt
+    #   -c requirements.txt
     #   jupyter-client
     #   jupyter-contrib-core
     #   jupyter-contrib-nbextensions
@@ -131,143 +131,143 @@ jupyter-latex-envs==1.4.6
     # via jupyter-contrib-nbextensions
 jupyter-nbextensions-configurator==0.4.1
     # via
-    #   -r requirements/requirements-dev.in
+    #   -r requirements-dev.in
     #   jupyter-contrib-nbextensions
 jupyterlab-pygments==0.1.2
     # via
-    #   -c requirements/requirements.txt
+    #   -c requirements.txt
     #   nbconvert
-lxml==4.6.2
+lxml==4.6.3
     # via jupyter-contrib-nbextensions
 markupsafe==1.1.1
     # via
-    #   -c requirements/requirements.txt
+    #   -c requirements.txt
     #   jinja2
 mistune==0.8.4
     # via
-    #   -c requirements/requirements.txt
+    #   -c requirements.txt
     #   nbconvert
 mypy-extensions==0.4.3
     # via black
 nbclient==0.5.1
     # via
-    #   -c requirements/requirements.txt
+    #   -c requirements.txt
     #   nbconvert
 nbconvert==6.0.7
     # via
-    #   -c requirements/requirements.txt
+    #   -c requirements.txt
     #   jupyter-contrib-nbextensions
     #   jupyter-latex-envs
     #   nbsphinx
     #   notebook
 nbformat==5.1.2
     # via
-    #   -c requirements/requirements.txt
+    #   -c requirements.txt
     #   nbclient
     #   nbconvert
     #   nbsphinx
     #   notebook
 nbsphinx==0.8.1
-    # via -r requirements/requirements-dev.in
+    # via -r requirements-dev.in
 nest-asyncio==1.5.1
     # via
-    #   -c requirements/requirements.txt
+    #   -c requirements.txt
     #   nbclient
 notebook==6.2.0
     # via
-    #   -c requirements/requirements.txt
+    #   -c requirements.txt
     #   jupyter-contrib-core
     #   jupyter-contrib-nbextensions
     #   jupyter-latex-envs
     #   jupyter-nbextensions-configurator
 packaging==20.9
     # via
-    #   -c requirements/requirements.txt
+    #   -c requirements.txt
     #   bleach
     #   sphinx
 pandocfilters==1.4.3
     # via
-    #   -c requirements/requirements.txt
+    #   -c requirements.txt
     #   nbconvert
 parso==0.8.1
     # via
-    #   -c requirements/requirements.txt
+    #   -c requirements.txt
     #   jedi
 pathspec==0.8.1
     # via black
 pexpect==4.8.0
     # via
-    #   -c requirements/requirements.txt
+    #   -c requirements.txt
     #   ipython
 pickleshare==0.7.5
     # via
-    #   -c requirements/requirements.txt
+    #   -c requirements.txt
     #   ipython
 prometheus-client==0.9.0
     # via
-    #   -c requirements/requirements.txt
+    #   -c requirements.txt
     #   notebook
 prompt-toolkit==3.0.14
     # via
-    #   -c requirements/requirements.txt
+    #   -c requirements.txt
     #   ipython
 ptyprocess==0.7.0
     # via
-    #   -c requirements/requirements.txt
+    #   -c requirements.txt
     #   pexpect
     #   terminado
 pycparser==2.20
     # via
-    #   -c requirements/requirements.txt
+    #   -c requirements.txt
     #   cffi
 pygments==2.7.4
     # via
-    #   -c requirements/requirements.txt
+    #   -c requirements.txt
     #   ipython
     #   jupyterlab-pygments
     #   nbconvert
     #   sphinx
 pyparsing==2.4.7
     # via
-    #   -c requirements/requirements.txt
+    #   -c requirements.txt
     #   packaging
 pyrsistent==0.17.3
     # via
-    #   -c requirements/requirements.txt
+    #   -c requirements.txt
     #   jsonschema
 python-dateutil==2.8.1
     # via
-    #   -c requirements/requirements.txt
+    #   -c requirements.txt
     #   jupyter-client
 pytz==2021.1
     # via
-    #   -c requirements/requirements.txt
+    #   -c requirements.txt
     #   babel
 pyyaml==5.4.1
     # via
-    #   -c requirements/requirements.txt
+    #   -c requirements.txt
     #   jupyter-contrib-nbextensions
     #   jupyter-nbextensions-configurator
 pyzmq==22.0.2
     # via
-    #   -c requirements/requirements.txt
+    #   -c requirements.txt
     #   jupyter-client
     #   notebook
 recommonmark==0.7.1
-    # via -r requirements/requirements-dev.in
+    # via -r requirements-dev.in
 regex==2020.11.13
     # via black
 requests==2.25.1
     # via
-    #   -c requirements/requirements.txt
+    #   -c requirements.txt
     #   sphinx
 send2trash==1.5.0
     # via
-    #   -c requirements/requirements.txt
+    #   -c requirements.txt
     #   notebook
 six==1.15.0
     # via
-    #   -c requirements/requirements.txt
+    #   -c requirements.txt
     #   argon2-cffi
     #   bleach
     #   jsonschema
@@ -275,10 +275,10 @@ six==1.15.0
 snowballstemmer==2.1.0
     # via sphinx
 sphinx-rtd-theme==0.5.1
-    # via -r requirements/requirements-dev.in
+    # via -r requirements-dev.in
 sphinx==3.4.3
     # via
-    #   -r requirements/requirements-dev.in
+    #   -r requirements-dev.in
     #   nbsphinx
     #   recommonmark
     #   sphinx-rtd-theme
@@ -296,17 +296,17 @@ sphinxcontrib-serializinghtml==1.1.4
     # via sphinx
 terminado==0.8.3
     # via
-    #   -c requirements/requirements.txt
+    #   -c requirements.txt
     #   notebook
 testpath==0.4.4
     # via
-    #   -c requirements/requirements.txt
+    #   -c requirements.txt
     #   nbconvert
 toml==0.10.2
     # via black
 tornado==6.1
     # via
-    #   -c requirements/requirements.txt
+    #   -c requirements.txt
     #   ipykernel
     #   jupyter-client
     #   jupyter-contrib-core
@@ -316,7 +316,7 @@ tornado==6.1
     #   terminado
 traitlets==5.0.5
     # via
-    #   -c requirements/requirements.txt
+    #   -c requirements.txt
     #   ipykernel
     #   ipython
     #   jupyter-client
@@ -334,19 +334,19 @@ typed-ast==1.4.2
     # via black
 typing-extensions==3.7.4.3
     # via
-    #   -c requirements/requirements.txt
+    #   -c requirements.txt
     #   black
 urllib3==1.26.3
     # via
-    #   -c requirements/requirements.txt
+    #   -c requirements.txt
     #   requests
 wcwidth==0.2.5
     # via
-    #   -c requirements/requirements.txt
+    #   -c requirements.txt
     #   prompt-toolkit
 webencodings==0.5.1
     # via
-    #   -c requirements/requirements.txt
+    #   -c requirements.txt
     #   bleach
 
 # The following packages are considered to be unsafe in a requirements file:
