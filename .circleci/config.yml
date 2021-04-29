@@ -67,7 +67,7 @@ commands:
 
     # Call pytest with nbval.
     - run:
-        name: Perform tox testing
+        name: Perform pytest --nbval testing
         command: |
           source << parameters.pyenv >>/bin/activate
           pytest --nbval --current-env --sanitize-with nbval_sanitization | tee --append test-results/pytest.log
