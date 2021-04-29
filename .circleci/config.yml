@@ -52,7 +52,7 @@ commands:
 
     # Install dependencies.
     - run:
-        name: Install production dependencies
+        name: Install dependencies
         command: |
           source << parameters.pyenv >>/bin/activate
           python -m piptools sync requirements/requirements.txt requirements/requirements-dev.txt
