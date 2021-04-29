@@ -70,7 +70,7 @@ commands:
         name: Perform tox testing
         command: |
           source << parameters.pyenv >>/bin/activate
-          pytest --nbval --sanitize-with nbval_sanitization | tee --append test-results/pytest.log
+          pytest --nbval --current-env --sanitize-with nbval_sanitization | tee --append test-results/pytest.log
 
   # Reusable command to store the previously generated test results.
   store_results:
