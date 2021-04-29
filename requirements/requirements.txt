@@ -218,10 +218,8 @@ six==1.15.0
     #   plotly
     #   python-dateutil
     #   retrying
-terminado==0.8.3
-    # via
-    #   -r requirements/requirements.in
-    #   notebook
+terminado==0.9.4
+    # via notebook
 testpath==0.4.4
     # via nbconvert
 tornado==6.1
