@@ -1,5 +1,6 @@
 # _PyDynamic tutorials_
 
+[![CircleCI](https://circleci.com/gh/PTB-PSt1/PyDynamic_tutorials.svg?style=shield)](https://circleci.com/gh/PTB-PSt1/PyDynamic_tutorials)
 [![Documentation Status](https://readthedocs.org/projects/pydynamic-tutorials/badge/?version=latest)](https://pydynamic-tutorials.readthedocs.io/en/latest/?badge=latest)
 
 We prepared a collection of tutorials and examples to document, explain and illustrate
