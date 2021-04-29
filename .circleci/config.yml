@@ -113,10 +113,8 @@ jobs:
   # output as they contain.
   test:
     # Define all parameters, where 'tag' is used for the docker image and 'pyenv' is
-    # the string which is used in tox to identify the current Python version. We reuse
+    # the string which is used to identify the current Python version. We reuse
     # this variable basically everywhere we deal with the virtual environment.
-    # 'send_cov' is the conditional for either sending the produced coverage report
-    # to codecov or not.
     parameters:
       tag:
         type: string
