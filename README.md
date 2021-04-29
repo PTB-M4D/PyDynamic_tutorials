@@ -65,7 +65,7 @@ $ source PyDynamic_tutorial_venv/bin/activate
 Collecting pip
 [...]
 Successfully installed click-7.1.2 pip-20.1.1 pip-tools-5.2.0 setuptools-47.1.1 six-1.15.0
-$ pip-sync requirements/requirement.txt
+$ pip-sync requirements/requirements.txt
 Collecting attrs==19.3.0
 [...]
 Installing collected packages: attrs, [...]
