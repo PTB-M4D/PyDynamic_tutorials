@@ -1,6 +1,8 @@
 download
 ipywidgets
-h5py
+# This pinning is needed because more current versions are not compatible with
+# Python 3.6.
+h5py<=3.1.0
 holoviews[recommended]
 notebook
 numpy

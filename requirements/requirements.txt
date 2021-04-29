@@ -36,7 +36,7 @@ download==0.3.5
     # via -r requirements/requirements.in
 entrypoints==0.3
     # via nbconvert
-h5py==3.2.1
+h5py==3.1.0
     # via -r requirements/requirements.in
 holoviews[recommended]==1.14.3
     # via -r requirements/requirements.in
