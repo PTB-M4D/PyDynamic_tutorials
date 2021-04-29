@@ -1,12 +1,11 @@
 download
-ipython<=7.16.1
+ipython
 ipywidgets
-# This pinning is needed because more current versions are not compatible with
-# Python 3.6.
-h5py<=3.1.0
+h5py
 holoviews[recommended]
 notebook
 numpy
+matplotlib
 pandas
 plotly
 PyDynamic

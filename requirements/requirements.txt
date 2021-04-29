@@ -18,6 +18,8 @@ bokeh==2.3.1
     # via
     #   holoviews
     #   panel
+cached-property==1.5.2
+    # via h5py
 certifi==2020.12.5
     # via requests
 cffi==1.14.5
@@ -29,7 +31,9 @@ colorcet==2.0.6
 cycler==0.10.0
     # via matplotlib
 decorator==5.0.7
-    # via ipython
+    # via
+    #   ipython
+    #   traitlets
 defusedxml==0.7.1
     # via nbconvert
 download==0.3.5
@@ -42,6 +46,10 @@ holoviews[recommended]==1.14.3
     # via -r requirements/requirements.in
 idna==2.10
     # via requests
+importlib-metadata==4.0.1
+    # via
+    #   jsonschema
+    #   markdown
 ipykernel==5.5.3
     # via
     #   ipywidgets
@@ -89,8 +97,9 @@ markdown==3.3.4
     # via panel
 markupsafe==1.1.1
     # via jinja2
-matplotlib==3.4.1
+matplotlib==3.3.4
     # via
+    #   -r requirements/requirements.in
     #   holoviews
     #   pydynamic
 mistune==0.8.4
@@ -112,7 +121,7 @@ notebook==6.3.0
     #   -r requirements/requirements.in
     #   holoviews
     #   widgetsnbextension
-numpy==1.20.2
+numpy==1.19.5
     # via
     #   -r requirements/requirements.in
     #   bokeh
@@ -126,7 +135,7 @@ packaging==20.9
     # via
     #   bleach
     #   bokeh
-pandas==1.2.4
+pandas==1.1.5
     # via
     #   -r requirements/requirements.in
     #   holoviews
@@ -205,7 +214,7 @@ requests==2.25.1
     #   panel
 retrying==1.3.3
     # via plotly
-scipy==1.6.3
+scipy==1.5.4
     # via pydynamic
 send2trash==1.5.0
     # via notebook
@@ -219,6 +228,7 @@ six==1.15.0
     #   plotly
     #   python-dateutil
     #   retrying
+    #   traitlets
 terminado==0.9.4
     # via notebook
 testpath==0.4.4
@@ -234,7 +244,7 @@ tqdm==4.60.0
     # via
     #   download
     #   panel
-traitlets==5.0.5
+traitlets==4.3.3
     # via
     #   ipykernel
     #   ipython
@@ -246,7 +256,9 @@ traitlets==5.0.5
     #   nbformat
     #   notebook
 typing-extensions==3.7.4.3
-    # via bokeh
+    # via
+    #   bokeh
+    #   importlib-metadata
 urllib3==1.26.4
     # via requests
 wcwidth==0.2.5
@@ -255,6 +267,8 @@ webencodings==0.5.1
     # via bleach
 widgetsnbextension==3.5.1
     # via ipywidgets
+zipp==3.4.1
+    # via importlib-metadata
 
 # The following packages are considered to be unsafe in a requirements file:
 # setuptools
