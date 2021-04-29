@@ -8,3 +8,4 @@ nbsphinx
 recommonmark
 sphinx_rtd_theme
 nbval
+dataclasses<=0.6
