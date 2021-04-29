@@ -89,7 +89,7 @@ ipython-genutils==0.2.0
     #   nbformat
     #   notebook
     #   traitlets
-ipython==7.22.0
+ipython==7.16.1
     # via
     #   -c requirements/requirements.txt
     #   ipykernel

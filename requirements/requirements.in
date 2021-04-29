@@ -1,4 +1,5 @@
 download
+ipython<=7.16.1
 ipywidgets
 # This pinning is needed because more current versions are not compatible with
 # Python 3.6.
