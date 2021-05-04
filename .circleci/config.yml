@@ -176,8 +176,7 @@ jobs:
       - restore_cache:
           keys:
             # Specify the unique identifier for the cache.
-            - v1-conda-dependencies-{{ checksum "requirements/environment.yml" }}-{{
-            - checksum "requirements/requirements.txt" }}-{{ checksum "requirements/requirements-dev.txt" }}
+            - v1-conda-dependencies-{{ checksum "requirements/environment.yml" }}-{{checksum "requirements/requirements.txt" }}-{{ checksum "requirements/requirements-dev.txt" }}
             # Fallback to using the latest cache if no exact match is found.
             - v1-conda-dependencies-
 
