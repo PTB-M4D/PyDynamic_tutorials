@@ -112,7 +112,7 @@ workflows:
           name: "test_python38"
           tag: "3.8"
           pyenv: "py38"
-      - test_conda38:
+      - test_conda38
 
 jobs:
 
