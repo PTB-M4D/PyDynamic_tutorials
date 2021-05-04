@@ -135,7 +135,7 @@ jobs:
 
     # Specify the executor and hand over the docker image tag parameter.
     executor:
-      name: tester
+      name: venv_tester
       tag: << parameters.tag >>
 
     # Specify the steps to execute during this test jobs.
