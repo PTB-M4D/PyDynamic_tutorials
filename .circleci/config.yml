@@ -176,7 +176,8 @@ jobs:
       - restore_cache:
           keys:
             # Specify the unique identifier for the cache.
-            - v1-conda-dependencies-{{ checksum "requirements/environment.yml" }}-{{ checksum "requirements/requirements.txt" }}-{{ checksum "requirements/dev-requirements.txt" }}
+            - v1-conda-dependencies-{{ checksum "requirements/environment.yml" }}-{{
+            - checksum "requirements/requirements.txt" }}-{{ checksum "requirements/requirements-dev.txt" }}
             # Fallback to using the latest cache if no exact match is found.
             - v1-conda-dependencies-
 
@@ -190,14 +191,14 @@ jobs:
                 conda env create -f requirements/environment.yml
             fi
             source $HOME/conda/etc/profile.d/conda.sh
-            conda activate PyDynamic_conda_env
-            pip install -r requirements/dev-requirements.txt
+            conda activate PyDynamic_tutorials
+            pip install -r requirements/requirements-dev.txt
 
       - save_cache:
           paths:
             - /home/circleci/conda/envs/
           key: >-
-            v1-conda-dependencies-{{ checksum "requirements/environment.yml" }}-{{ checksum "requirements/requirements.txt" }}-{{ checksum "requirements/dev-requirements.txt" }}
+            v1-conda-dependencies-{{ checksum "requirements/environment.yml" }}-{{ checksum "requirements/requirements.txt" }}-{{ checksum "requirements/requirements-dev.txt" }}
 
       # Run tests! We use pytest's test-runner.
       - run:
