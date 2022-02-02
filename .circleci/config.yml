@@ -267,7 +267,7 @@ jobs:
                   outdated dependencies."
             else
                 set -e
-                echo "There already was a PR opened earlier. The changes were
+                echo "There already was a PR opened earlier. The changes were \
                   overridden."
             fi
 
