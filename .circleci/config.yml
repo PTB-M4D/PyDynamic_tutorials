@@ -101,7 +101,7 @@ workflows:
 #          cron: "0 0 1 * *"
 #          filters:
 #            branches:
-#              only: /master/
+#              only: /main/
     jobs:
 #      - test_with_updated_deps:
 #          name: "test_with_updated_deps_py37"
@@ -255,12 +255,21 @@ jobs:
           name: Open PR
           command: |
             set +e
-            gh pr create --base master --title "Update deps" \
-              --body "This PR provides recompiled deps for all outdated package \
-              versions. It was opened after the commited deps were succesfully \
-              compiled and all tests passed with the new versions. It should be \
-              merged as soon as possible to avoid any security issues due to \
-              outdated dependencies."
+            NEW_BRANCH=recompile_deps
+            gh pr list --head=$NEW_BRANCH | grep $NEW_BRANCH
+            if [ $? -eq 1 ]; then
+                set -e
+                gh pr create --head --base main --title "Update deps" \
+                  --body "This PR provides recompiled deps for all outdated package \
+                  versions. It was opened after the commited deps were succesfully \
+                  compiled and all tests passed with the new versions. It should be \
+                  merged as soon as possible to avoid any security issues due to \
+                  outdated dependencies."
+            else
+                set -e
+                echo "There already was a PR opened earlier. The changes were
+                  overridden."
+            fi
 
   # Define one 'test' job with parameters to deal with all desired cases and one
   # Anaconda test job. The reason for this is the desire to ensure the following for
