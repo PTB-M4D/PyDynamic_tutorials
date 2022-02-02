@@ -15,25 +15,34 @@ executors:
         default: "3.10"
     docker:
       - image: cimg/python:<< parameters.tag >>
+        auth:
+          username: $DOCKER_USER
+          password: $DOCKER_PASS
   conda_tester:
     working_directory: ~/repo
     docker:
       - image: cimg/base:2021.04
+        auth:
+          username: $DOCKER_USER
+          password: $DOCKER_PASS
+  gh_releaser:
+    working_directory: ~/repo
+    docker:
+      - image: cimg/base:2021.04
+        auth:
+          username: $DOCKER_USER
+          password: $DOCKER_PASS
 
 commands:
-  # Reusable command to prepare the environment for testing.
   create_folders:
     description: "Checkout code and prepare test results location."
     steps:
-    # Checkout code.
     - checkout
-    # Create test-result folder.
     - run:
         name: Create test result folder
         command: |
           mkdir test-results
 
-  # Reusable command to prepare the environment for testing.
   create_venv:
     description: "Prepare virtual environment."
     parameters:
@@ -41,15 +50,13 @@ commands:
         type: string
         default: "py310"
     steps:
-    # Create PyDynamic_tutorials virtual environment.
     - run:
         name: Create virtual environment
         command: |
           python3 -m venv << parameters.pyenv >>
           source << parameters.pyenv >>/bin/activate
-          pip install --upgrade pip setuptools pip-tools
+          pip install --upgrade pip==21.3.0 pip-tools
 
-  # Reusable command to install production dependencies.
   install_deps:
     description: "Install dependencies."
     parameters:
@@ -58,14 +65,12 @@ commands:
         default: "py310"
     steps:
 
-    # Install dependencies.
     - run:
         name: Install dependencies
         command: |
           source << parameters.pyenv >>/bin/activate
           python -m piptools sync requirements/requirements.txt requirements/requirements-dev.txt
 
-  # Reusable command to conduct actual testing.
   execute_nbval:
     description: "Execute pytest with nbval plugin."
     parameters:
@@ -73,7 +78,6 @@ commands:
         type: string
     steps:
 
-    # Call pytest with nbval.
     - run:
         name: Perform pytest --nbval testing
         command: |
@@ -81,12 +85,10 @@ commands:
           pytest --nbval --current-env --sanitize-with nbval_sanitization | \
             tee --append test-results/pytest.log
 
-  # Reusable command to store the previously generated test results.
   store_results:
     description: "Store test results and artifacts."
 
     steps:
-    # Store test results.
     - store_artifacts:
         path: test-results
         destination: test-results
@@ -95,28 +97,171 @@ commands:
         path: test-results
 
 workflows:
-  # Create workflow for testing PyDynamic_tutorials.
+
+  check_for_upgraded_deps:
+    triggers:
+      - schedule:
+          cron: "0 0 1 * *"
+          filters:
+            branches:
+              only: /master/
+    jobs:
+      - test_with_updated_deps:
+          name: "test_with_updated_deps_py37"
+          tag: "3.7"
+          toxenvs: "py37"
+          context:
+            - Docker publishing as bludoc
+      - test_with_updated_deps:
+          name: "test_with_updated_deps_py38"
+          tag: "3.8"
+          toxenvs: "py38"
+          context:
+            - Docker publishing as bludoc
+      - test_with_updated_deps:
+          name: "test_with_updated_deps_py39"
+          tag: "3.9"
+          toxenvs: "py39"
+          context:
+            - Docker publishing as bludoc
+      - test_with_updated_deps:
+          name: "test_with_updated_deps_py310"
+          tag: "3.10"
+          toxenvs: "py310"
+          context:
+            - Docker publishing as bludoc
+      - commit_push_open_pr:
+          requires:
+            - test_with_updated_deps_py37
+            - test_with_updated_deps_py38
+            - test_with_updated_deps_py39
+            - test_with_updated_deps_py310
+          context:
+            - Docker publishing as bludoc
+            - GitHub pushes to BjoernLudwigPTB's public_repos
+
   test:
     jobs:
       - test:
           name: "test_python37"
           tag: "3.7"
           pyenv: "py37"
+          context:
+            - Docker publishing as bludoc
       - test:
           name: "test_python38"
           tag: "3.8"
           pyenv: "py38"
+          context:
+            - Docker publishing as bludoc
       - test:
           name: "test_python39"
           tag: "3.9"
           pyenv: "py39"
+          context:
+            - Docker publishing as bludoc
       - test:
           name: "test_python310"
           tag: "3.10"
           pyenv: "py310"
-      - test_conda310
+          context:
+            - Docker publishing as bludoc
+      - test_conda310:
+          context:
+            - Docker publishing as bludoc
 
 jobs:
+
+  test_with_updated_deps:
+    parameters:
+      tag:
+        type: string
+        default: "3.10"
+      pyenv:
+        type: string
+        default: "py310"
+      posargs:
+        type: string
+        default: ""
+
+    executor:
+      name: venv_tester
+      tag: << parameters.tag >>
+
+    steps:
+      - create_folders
+      - run:
+          name: Recompile and sync deps
+          command: |
+            source << parameters.pyenv >>/bin/activate
+            python -m pip install --upgrade tox pip-tools
+            python -m piptools compile --upgrade \
+              requirements/requirements.in
+            python -m piptools compile --upgrade \
+              requirements/requirements-dev.in
+            python -m piptools sync requirements/requirements.txt \
+              requirements-dev.txt
+      - execute_nbval:
+          pyenv: << parameters.pyenv >>
+
+      - store_results
+
+      - persist_to_workspace:
+          root: .
+          paths:
+            - requirements/requirements-<< parameters.pyenv >>.txt
+            - requirements/dev-requirements-<< parameters.pyenv >>.txt
+
+  commit_push_open_pr:
+    executor:
+      name: gh_releaser
+
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run:
+          name: Commit and push changes
+          command: |
+            git config --global user.name "Bjoern Ludwig (via CircleCI)"
+            git config --global user.email "bjoern.ludwig@ptb.de"
+            NEW_BRANCH=recompile_deps
+            git checkout -b ${NEW_BRANCH}
+            git add .
+            set +e
+            git status | grep modified
+            if [ $? -eq 0 ]; then
+                set -e
+                git commit -am \
+                  "build(deps): recompile Python dev deps"
+                git push -fu origin  ${NEW_BRANCH}
+            else
+                set -e
+                echo "Nothing to commit. No updated deps."
+            fi
+
+      - run:
+          name: Install GitHub CLI
+          command: |
+            curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | \
+              sudo dd of=/etc/apt/trusted.gpg.d/githubcli-archive-keyring.gpg
+            echo "deb [arch=$(dpkg --print-architecture) \
+              signed-by=/etc/apt/trusted.gpg.d/githubcli-archive-keyring.gpg] \
+              https://cli.github.com/packages stable main" | \
+              sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
+            sudo apt update
+            sudo apt install gh
+
+      - run:
+          name: Open PR
+          command: |
+            set +e
+            gh pr create --base master --title "Update deps" \
+              --body "This PR provides recompiled deps for all outdated package \
+              versions. It was opened after the commited deps were succesfully \
+              compiled and all tests passed with the new versions. It should be \
+              merged as soon as possible to avoid any security issues due to \
+              outdated dependencies."
 
   # Define one 'test' job with parameters to deal with all desired cases and one
   # Anaconda test job. The reason for this is the desire to ensure the following for
@@ -135,12 +280,10 @@ jobs:
         type: string
         default: "py310"
 
-    # Specify the executor and hand over the docker image tag parameter.
     executor:
       name: venv_tester
       tag: << parameters.tag >>
 
-    # Specify the steps to execute during this test jobs.
     steps:
       - create_folders
       - create_venv:
@@ -148,13 +291,8 @@ jobs:
       - install_deps:
           pyenv: << parameters.pyenv >>
 
-      # Call pytest with nbval.
-      - run:
-          name: Perform pytest --nbval testing
-          command: |
-            source << parameters.pyenv >>/bin/activate
-            pytest --nbval --current-env --sanitize-with nbval_sanitization | \
-              tee --append test-results/pytest.log
+      - execute_nbval:
+          pyenv: << parameters.pyenv >>
 
       - store_results
 
