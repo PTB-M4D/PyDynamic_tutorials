@@ -12,9 +12,9 @@ executors:
     parameters:
       tag:
         type: string
-        default: "3.8"
+        default: "3.10"
     docker:
-      - image: circleci/python:<< parameters.tag >>
+      - image: cimg/python:<< parameters.tag >>
   conda_tester:
     working_directory: ~/repo
     docker:
@@ -39,7 +39,7 @@ commands:
     parameters:
       pyenv:
         type: string
-        default: "py38"
+        default: "py310"
     steps:
     # Create PyDynamic_tutorials virtual environment.
     - run:
@@ -55,7 +55,7 @@ commands:
     parameters:
       pyenv:
         type: string
-        default: "py38"
+        default: "py310"
     steps:
 
     # Install dependencies.
@@ -78,7 +78,8 @@ commands:
         name: Perform pytest --nbval testing
         command: |
           source << parameters.pyenv >>/bin/activate
-          pytest --nbval --current-env --sanitize-with nbval_sanitization | tee --append test-results/pytest.log
+          pytest --nbval --current-env --sanitize-with nbval_sanitization | \
+            tee --append test-results/pytest.log
 
   # Reusable command to store the previously generated test results.
   store_results:
@@ -97,11 +98,6 @@ workflows:
   # Create workflow for testing PyDynamic_tutorials.
   test:
     jobs:
-      # Create 'test' job to test and install PyDynamic_tutorials for every commit.
-      - test:
-          name: "test_python36"
-          tag: "3.6"
-          pyenv: "py36"
       - test:
           name: "test_python37"
           tag: "3.7"
@@ -110,7 +106,15 @@ workflows:
           name: "test_python38"
           tag: "3.8"
           pyenv: "py38"
-      - test_conda38
+      - test:
+          name: "test_python39"
+          tag: "3.9"
+          pyenv: "py39"
+      - test:
+          name: "test_python310"
+          tag: "3.10"
+          pyenv: "py310"
+      - test_conda310
 
 jobs:
 
@@ -126,10 +130,10 @@ jobs:
     parameters:
       tag:
         type: string
-        default: "3.8"
+        default: "3.10"
       pyenv:
         type: string
-        default: "py38"
+        default: "py310"
 
     # Specify the executor and hand over the docker image tag parameter.
     executor:
@@ -149,11 +153,12 @@ jobs:
           name: Perform pytest --nbval testing
           command: |
             source << parameters.pyenv >>/bin/activate
-            pytest --nbval --current-env --sanitize-with nbval_sanitization | tee --append test-results/pytest.log
+            pytest --nbval --current-env --sanitize-with nbval_sanitization | \
+              tee --append test-results/pytest.log
 
       - store_results
 
-  test_conda38:
+  test_conda310:
 
     executor: conda_tester
 
@@ -176,9 +181,9 @@ jobs:
       - restore_cache:
           keys:
             # Specify the unique identifier for the cache.
-            - v1-conda-dependencies-{{ checksum "requirements/environment.yml" }}-{{checksum "requirements/requirements.txt" }}-{{ checksum "requirements/requirements-dev.txt" }}
+            - v2-conda-dependencies-{{ checksum "requirements/environment.yml" }}-{{checksum "requirements/requirements.txt" }}-{{ checksum "requirements/requirements-dev.txt" }}
             # Fallback to using the latest cache if no exact match is found.
-            - v1-conda-dependencies-
+            - v2-conda-dependencies-
 
       # Create environment and install extra_requires dependencies manually.
       - run:
@@ -197,7 +202,7 @@ jobs:
           paths:
             - /home/circleci/conda/envs/
           key: >-
-            v1-conda-dependencies-{{ checksum "requirements/environment.yml" }}-{{ checksum "requirements/requirements.txt" }}-{{ checksum "requirements/requirements-dev.txt" }}
+            v2-conda-dependencies-{{ checksum "requirements/environment.yml" }}-{{ checksum "requirements/requirements.txt" }}-{{ checksum "requirements/requirements-dev.txt" }}
 
       # Run tests! We use pytest's test-runner.
       - run:
@@ -206,6 +211,6 @@ jobs:
             source $HOME/conda/etc/profile.d/conda.sh
             conda activate PyDynamic_tutorials
             pytest --nbval --current-env --sanitize-with nbval_sanitization | \
-            tee --append test-results/pytest.log
+              tee --append test-results/pytest.log
 
       - store_results
