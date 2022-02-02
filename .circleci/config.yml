@@ -77,7 +77,6 @@ commands:
       pyenv:
         type: string
     steps:
-
     - run:
         name: Perform pytest --nbval testing
         command: |
@@ -87,12 +86,10 @@ commands:
 
   store_results:
     description: "Store test results and artifacts."
-
     steps:
     - store_artifacts:
         path: test-results
         destination: test-results
-
     - store_test_results:
         path: test-results
 
@@ -202,7 +199,7 @@ jobs:
             python -m piptools compile --upgrade \
               requirements/requirements-dev.in
             python -m piptools sync requirements/requirements.txt \
-              requirements-dev.txt
+              requirements/requirements-dev.txt
       - execute_nbval:
           pyenv: << parameters.pyenv >>
 
@@ -211,8 +208,8 @@ jobs:
       - persist_to_workspace:
           root: .
           paths:
-            - requirements/requirements-<< parameters.pyenv >>.txt
-            - requirements/dev-requirements-<< parameters.pyenv >>.txt
+            - requirements/requirements.txt
+            - requirements/requirements-dev.txt
 
   commit_push_open_pr:
     executor:
