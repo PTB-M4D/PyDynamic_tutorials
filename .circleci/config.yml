@@ -205,11 +205,15 @@ jobs:
 
       - store_results
 
-      - persist_to_workspace:
-          root: .
-          paths:
-            - requirements/requirements.txt
-            - requirements/requirements-dev.txt
+      - when:
+          condition:
+            equal: [ "py310", << parameters.pyenv >> ]
+          steps:
+            - persist_to_workspace:
+                root: .
+                paths:
+                  - requirements/requirements.txt
+                  - requirements/requirements-dev.txt
 
   commit_push_open_pr:
     executor:
