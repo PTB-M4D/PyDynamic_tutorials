@@ -324,9 +324,9 @@ jobs:
       - restore_cache:
           keys:
             # Specify the unique identifier for the cache.
-            - v2-conda-dependencies-{{ checksum "requirements/environment.yml" }}-{{checksum "requirements/requirements.txt" }}-{{ checksum "requirements/requirements-dev.txt" }}
+            - v3-conda-dependencies-{{ checksum "requirements/environment.yml" }}-{{checksum "requirements/requirements.txt" }}-{{ checksum "requirements/requirements-dev.txt" }}
             # Fallback to using the latest cache if no exact match is found.
-            - v2-conda-dependencies-
+            - v3-conda-dependencies-
 
       # Create environment and install extra_requires dependencies manually.
       - run:
@@ -345,7 +345,7 @@ jobs:
           paths:
             - /home/circleci/conda/envs/
           key: >-
-            v2-conda-dependencies-{{ checksum "requirements/environment.yml" }}-{{ checksum "requirements/requirements.txt" }}-{{ checksum "requirements/requirements-dev.txt" }}
+            v3-conda-dependencies-{{ checksum "requirements/environment.yml" }}-{{ checksum "requirements/requirements.txt" }}-{{ checksum "requirements/requirements-dev.txt" }}
 
       # Run tests! We use pytest's test-runner.
       - run:
