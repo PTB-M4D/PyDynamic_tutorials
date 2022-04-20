@@ -1,11 +1,11 @@
 download
-ipython
+ipython < 8.0 # This pinning is needed for Python 3.7
 ipywidgets
 h5py
 holoviews[recommended]
 notebook
-numpy
+numpy < 1.22.0 # This pinning is needed for Python 3.7
 matplotlib
-pandas
+pandas < 1.4.0 # This pinning is needed for Python 3.7
 plotly
 PyDynamic
