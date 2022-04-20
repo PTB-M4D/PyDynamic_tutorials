@@ -79,6 +79,7 @@ commands:
     steps:
     - run:
         name: Perform pytest --nbval testing
+        no_output_timeout: 30m
         command: |
           source << parameters.pyenv >>/bin/activate
           pytest --nbval --current-env --sanitize-with nbval_sanitization | \
@@ -349,6 +350,7 @@ jobs:
       # Run tests! We use pytest's test-runner.
       - run:
           name: Run tests
+          no_output_timeout: 30m
           command: |
             source $HOME/conda/etc/profile.d/conda.sh
             conda activate PyDynamic_tutorials
