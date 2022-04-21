@@ -9,6 +9,5 @@ def pytest_collectstart(collector):
             "stderr",
             "application/javascript",
             "application/vnd.holoviews_load.v0+json",
-            'application/vnd.plotly.v1+json'
             "text/html",
         )
