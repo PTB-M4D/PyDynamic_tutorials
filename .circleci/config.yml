@@ -136,6 +136,7 @@ workflows:
             - test_with_updated_deps_py310
           context:
             - Docker publishing as bludoc
+            - GitHub pushes to BjoernLudwigPTB's public_repos
 
   test:
     jobs:
