@@ -97,12 +97,10 @@ commands:
 workflows:
 
   check_for_upgraded_deps:
-    triggers:
-      - schedule:
-          cron: "0 0 1 * *"
-          filters:
-            branches:
-              only: /main/
+    when:
+      and:
+        - equal: [ scheduled_pipeline, << pipeline.trigger_source >> ]
+        - equal: [ "Recompile and test deps", << pipeline.schedule.name >> ]
     jobs:
       - test_with_updated_deps:
           name: "test_with_updated_deps_py37"
@@ -139,6 +137,9 @@ workflows:
             - GitHub pushes to BjoernLudwigPTB's public_repos
 
   test:
+    when:
+      not:
+        equal: [ scheduled_pipeline, << pipeline.trigger_source >> ]
     jobs:
       - test:
           name: "test_python37"
