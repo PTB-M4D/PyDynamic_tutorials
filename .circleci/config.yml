@@ -209,7 +209,7 @@ jobs:
 
       - when:
           condition:
-            equal: [ "py310", << parameters.pyenv >> ]
+            equal: [ "py37", << parameters.pyenv >> ]
           steps:
             - persist_to_workspace:
                 root: .
