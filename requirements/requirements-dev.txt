@@ -75,7 +75,6 @@ entrypoints==0.4
     # via
     #   -c requirements/requirements.txt
     #   jupyter-client
-    #   nbconvert
 fastjsonschema==2.16.1
     # via
     #   -c requirements/requirements.txt
@@ -91,6 +90,7 @@ importlib-metadata==4.12.0
     #   -c requirements/requirements.txt
     #   click
     #   jsonschema
+    #   nbconvert
     #   pluggy
     #   pytest
     #   sphinx
@@ -130,7 +130,7 @@ jsonschema==4.14.0
     # via
     #   -c requirements/requirements.txt
     #   nbformat
-jupyter-client==7.3.4
+jupyter-client==7.3.5
     # via
     #   -c requirements/requirements.txt
     #   ipykernel
@@ -181,17 +181,17 @@ matplotlib-inline==0.1.6
     #   -c requirements/requirements.txt
     #   ipykernel
     #   ipython
-mistune==0.8.4
+mistune==2.0.4
     # via
     #   -c requirements/requirements.txt
     #   nbconvert
 mypy-extensions==0.4.3
     # via black
-nbclient==0.6.6
+nbclient==0.6.7
     # via
     #   -c requirements/requirements.txt
     #   nbconvert
-nbconvert==6.5.3
+nbconvert==7.0.0
     # via
     #   -c requirements/requirements.txt
     #   jupyter-contrib-nbextensions
@@ -405,7 +405,7 @@ typing-extensions==4.3.0
     #   black
     #   importlib-metadata
     #   jsonschema
-urllib3==1.26.11
+urllib3==1.26.12
     # via
     #   -c requirements/requirements.txt
     #   requests

@@ -41,12 +41,10 @@ defusedxml==0.7.1
 download==0.3.5
     # via -r requirements/requirements.in
 entrypoints==0.4
-    # via
-    #   jupyter-client
-    #   nbconvert
+    # via jupyter-client
 fastjsonschema==2.16.1
     # via nbformat
-fonttools==4.36.0
+fonttools==4.37.1
     # via matplotlib
 future==0.18.2
     # via uncertainties
@@ -60,6 +58,7 @@ importlib-metadata==4.12.0
     # via
     #   jsonschema
     #   markdown
+    #   nbconvert
 importlib-resources==5.9.0
     # via jsonschema
 ipykernel==6.15.1
@@ -85,7 +84,7 @@ jinja2==3.1.2
     #   notebook
 jsonschema==4.14.0
     # via nbformat
-jupyter-client==7.3.4
+jupyter-client==7.3.5
     # via
     #   ipykernel
     #   nbclient
@@ -119,13 +118,13 @@ matplotlib-inline==0.1.6
     # via
     #   ipykernel
     #   ipython
-mistune==0.8.4
+mistune==2.0.4
     # via nbconvert
 mpmath==1.2.1
     # via sympy
-nbclient==0.6.6
+nbclient==0.6.7
     # via nbconvert
-nbconvert==6.5.3
+nbconvert==7.0.0
     # via notebook
 nbformat==5.4.0
     # via
@@ -297,7 +296,7 @@ typing-extensions==4.3.0
     #   panel
 uncertainties==3.1.7
     # via time-series-buffer
-urllib3==1.26.11
+urllib3==1.26.12
     # via requests
 wcwidth==0.2.5
     # via prompt-toolkit
