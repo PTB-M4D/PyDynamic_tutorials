@@ -110,8 +110,9 @@ jsonschema[format-nongpl]==4.17.3
     # via
     #   jupyter-events
     #   nbformat
-jupyter-client==8.0.2
+jupyter-client==8.0.1
     # via
+    #   -r requirements/requirements.in
     #   ipykernel
     #   jupyter-server
     #   nbclassic
