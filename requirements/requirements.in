@@ -5,6 +5,7 @@ ipython < 8.0  # This pinning is needed for Python 3.7
 ipywidgets
 jupyter-client < 8.0.0  # This pinning is needed for Python 3.7
 jupyter-core <= 4.12.0  # This pinning is needed for Python 3.7
+jupyter-server <= 1.23.5  # This pinning is needed for Python 3.7
 h5py
 holoviews[recommended]
 notebook
