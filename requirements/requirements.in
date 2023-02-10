@@ -14,3 +14,4 @@ matplotlib <= 3.5.3  # This pinning is needed for Python 3.7
 pandas < 1.4.0  # This pinning is needed for Python 3.7
 plotly
 PyDynamic
+pywavelets <= 1.4.0  # This pinning is needed for Python 3.7
