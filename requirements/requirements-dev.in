@@ -2,9 +2,10 @@
 
 jupyter_contrib_nbextensions
 jupyter_nbextensions_configurator
+ipython
+myst-parser
 black
 sphinx
 nbsphinx
-recommonmark
 sphinx_rtd_theme
 nbval
