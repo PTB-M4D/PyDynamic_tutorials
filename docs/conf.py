@@ -118,8 +118,8 @@ master_doc = "index"
 
 # General information about the project.
 project = "PyDynamic_tutorials"
-copyright = "2020, Sascha Eichstädt, Björn Ludwig"
-author = "Sascha Eichstädt, Björn Ludwig"
+copyright = "2023, Sascha Eichstädt, Björn Ludwig, Maximilian Gruber"
+author = "Sascha Eichstädt, Björn Ludwig, Maximilian Gruber"
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
