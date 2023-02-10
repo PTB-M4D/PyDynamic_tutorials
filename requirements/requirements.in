@@ -1,8 +1,9 @@
-contourpy<=1.0.6  # This pinning is needed for Python 3.7
+contourpy <= 1.0.6  # This pinning is needed for Python 3.7
 download
-ipykernel<=6.16.2  # This pinning is needed for Python 3.7
+ipykernel <= 6.16.2  # This pinning is needed for Python 3.7
 ipython < 8.0  # This pinning is needed for Python 3.7
 ipywidgets
+jupyter-client < 8.0.2  # This pinning is needed for Python 3.7
 h5py
 holoviews[recommended]
 notebook
