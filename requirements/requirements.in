@@ -15,3 +15,4 @@ pandas < 1.4.0  # This pinning is needed for Python 3.7
 plotly
 PyDynamic
 pywavelets <= 1.4.0  # This pinning is needed for Python 3.7
+scipy <= 1.7.3  # This pinning is needed for Python 3.7
