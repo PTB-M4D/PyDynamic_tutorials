@@ -37,8 +37,6 @@ charset-normalizer==3.0.1
     # via requests
 colorcet==3.0.1
     # via holoviews
-comm==0.1.2
-    # via ipykernel
 contourpy==1.0.6
     # via
     #   -r requirements/requirements.in
@@ -77,8 +75,9 @@ importlib-metadata==6.0.0
     #   nbconvert
 importlib-resources==5.10.2
     # via jsonschema
-ipykernel==6.21.1
+ipykernel==6.16.2
     # via
+    #   -r requirements/requirements.in
     #   ipywidgets
     #   nbclassic
     #   notebook
@@ -120,7 +119,6 @@ jupyter-client==8.0.2
     #   notebook
 jupyter-core==5.2.0
     # via
-    #   ipykernel
     #   jupyter-client
     #   jupyter-server
     #   nbclassic
@@ -353,7 +351,6 @@ tqdm==4.64.1
     #   panel
 traitlets==5.9.0
     # via
-    #   comm
     #   ipykernel
     #   ipython
     #   ipywidgets
