@@ -6,6 +6,7 @@ ipython
 myst-parser
 black
 sphinx
+sphinxcontrib-applehelp <= 1.0.2  # This pinning is needed for Python 3.7
 nbsphinx
 sphinx_rtd_theme
 nbval
