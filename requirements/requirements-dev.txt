@@ -79,6 +79,10 @@ docutils==0.18.1
     #   nbsphinx
     #   sphinx
     #   sphinx-rtd-theme
+entrypoints==0.4
+    # via
+    #   -c requirements/requirements.txt
+    #   jupyter-client
 exceptiongroup==1.1.0
     # via pytest
 fastjsonschema==2.16.2
@@ -100,7 +104,6 @@ imagesize==1.4.1
 importlib-metadata==6.0.0
     # via
     #   -c requirements/requirements.txt
-    #   jupyter-client
     #   nbconvert
     #   sphinx
 importlib-resources==5.10.2
@@ -153,7 +156,7 @@ jsonschema[format-nongpl]==4.17.3
     #   -c requirements/requirements.txt
     #   jupyter-events
     #   nbformat
-jupyter-client==8.0.1
+jupyter-client==7.4.9
     # via
     #   -c requirements/requirements.txt
     #   ipykernel
@@ -266,6 +269,7 @@ nest-asyncio==1.5.6
     # via
     #   -c requirements/requirements.txt
     #   ipykernel
+    #   jupyter-client
     #   nbclassic
     #   notebook
 notebook==6.5.2

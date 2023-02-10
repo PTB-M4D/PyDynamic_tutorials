@@ -51,6 +51,8 @@ defusedxml==0.7.1
     # via nbconvert
 download==0.3.5
     # via -r requirements/requirements.in
+entrypoints==0.4
+    # via jupyter-client
 fastjsonschema==2.16.2
     # via nbformat
 fonttools==4.38.0
@@ -70,7 +72,6 @@ idna==3.4
     #   requests
 importlib-metadata==6.0.0
     # via
-    #   jupyter-client
     #   markdown
     #   nbconvert
 importlib-resources==5.10.2
@@ -110,7 +111,7 @@ jsonschema[format-nongpl]==4.17.3
     # via
     #   jupyter-events
     #   nbformat
-jupyter-client==8.0.1
+jupyter-client==7.4.9
     # via
     #   -r requirements/requirements.in
     #   ipykernel
@@ -179,6 +180,7 @@ nbformat==5.7.3
 nest-asyncio==1.5.6
     # via
     #   ipykernel
+    #   jupyter-client
     #   nbclassic
     #   notebook
 notebook==6.5.2
