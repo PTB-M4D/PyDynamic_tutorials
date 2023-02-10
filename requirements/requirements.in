@@ -3,7 +3,7 @@ download
 ipykernel <= 6.16.2  # This pinning is needed for Python 3.7
 ipython < 8.0  # This pinning is needed for Python 3.7
 ipywidgets
-jupyter-client < 8.0.2  # This pinning is needed for Python 3.7
+jupyter-client < 8.0.0  # This pinning is needed for Python 3.7
 h5py
 holoviews[recommended]
 notebook
