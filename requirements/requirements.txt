@@ -264,8 +264,10 @@ pyviz-comms==2.2.1
     # via
     #   holoviews
     #   panel
-pywavelets==1.4.1
-    # via pydynamic
+pywavelets==1.3.0
+    # via
+    #   -r requirements/requirements.in
+    #   pydynamic
 pyyaml==6.0
     # via bokeh
 pyzmq==25.0.0
