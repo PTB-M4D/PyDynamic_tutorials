@@ -373,7 +373,8 @@ jobs:
           command: |
             source $HOME/conda/etc/profile.d/conda.sh
             conda activate PyDynamic_tutorials
-            pytest --nbval --current-env --sanitize-with nbval_sanitization | \
+            pytest --nbval --nbval-current-env \
+              --nbval-sanitize-with nbval_sanitization | \
               tee --append test-results/pytest.log
 
       - store_results
