@@ -38,8 +38,9 @@ extensions = [
     "sphinx.ext.viewcode",
     "sphinx.ext.napoleon",
     "sphinx.ext.todo",
+    "myst_parser",
     "nbsphinx",
-    "recommonmark",
+    "IPython.sphinxext.ipython_console_highlighting",
 ]
 
 nbsphinx_allow_errors = True
